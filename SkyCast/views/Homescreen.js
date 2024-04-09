@@ -3,7 +3,6 @@ import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 
 const HomeScreen = () => {
-  // Example weather icon URL
   const weatherIconUrl = "https://cdn-icons-png.flaticon.com/512/10127/10127236.png";
   
   const navigation = useNavigation();
@@ -14,7 +13,7 @@ const HomeScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Welcome to SkyCast</Text>
+      <Text style={styles.title} >Welcome to SkyCast</Text>
       <Image source={{ uri: weatherIconUrl }} style={styles.weatherIcon} />
       <TouchableOpacity style={styles.button} onPress={handleGetStarted}>
         <Text style={styles.buttonText}>Get Started</Text>
@@ -48,7 +47,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
 },
   weatherIcon: {
-    width: 100, // Adjust the width and height as needed
+    width: 100, 
     height: 100,
     marginBottom: 20,
   },
