@@ -18,8 +18,8 @@ export default function Details() {
         className="absolute h-full w-full"
       />
 
-      <View className="flex-row justify-between mx-4">
-        <View className="flex-row space-x-2 items-center">
+      <View className="flex justify-center items-center">
+        <View className="flex-row space-x-2 items-center p-5">
           <TouchableOpacity>
             <Text className="text-white">Air Speed</Text>
             <Image
@@ -29,14 +29,16 @@ export default function Details() {
             <Text className="text-white font-semibold text-base">22km</Text>
           </TouchableOpacity>
         </View>
-        <View className="flex-row space-x-2 items-center">
+
+        <View className="flex-row space-x-2 items-center p-5">
           <TouchableOpacity>
-            <Text className="text-white">Air Speed</Text>
+            <Text className="text-white">Sunrise</Text>
             <Image source={require("../icons/sun.png")} className="h-20 w-20" />
             <Text className="text-white font-semibold text-base">6:05AM</Text>
           </TouchableOpacity>
         </View>
-        <View className="flex-row space-x-2 items-center">
+
+        <View className="flex-row space-x-2 items-center p-5">
           <TouchableOpacity>
             <Text className="text-white">Precipitation</Text>
             <Image
@@ -46,6 +48,7 @@ export default function Details() {
             <Text className="text-white font-semibold text-base">23%</Text>
           </TouchableOpacity>
         </View>
+
       </View>
     </View>
   );
