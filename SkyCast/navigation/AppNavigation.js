@@ -5,14 +5,17 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from "../views/Homescreen"; 
 import MainPage from "../views/MainPage";
+import Details from "../views/Details";
+
 const Stack = createStackNavigator();
 
 export default function AppNavigation() {
   return (
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen options={{ title: 'My home' }} name="Home" component={HomeScreen} />
           <Stack.Screen name="MainPage" component={MainPage} />
+          <Stack.Screen name="Details" component={Details} />
         </Stack.Navigator>
       </NavigationContainer>
   );
