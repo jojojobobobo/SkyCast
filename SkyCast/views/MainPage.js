@@ -112,7 +112,10 @@ export default function MainPage() {
             className="justify-between mx-4 text-center rounded-full"
             onPress={getDetails}
           >
-            <Text className="text-white bg-blue-600 mt-5 rounded-lg text-2xl border-2">
+            <Text
+              className="text-white bg-blue-600 mt-5 rounded-lg text-2xl border-2"
+              style={{ backgroundColor: theme.bgWhite(0.15) }}
+            >
               See Details
             </Text>
           </TouchableOpacity>
@@ -197,7 +200,10 @@ export default function MainPage() {
                 className="h-11 w-11"
               />
               <Text className="text-white">Saturday</Text>
-              <Text className="text-white text-xl font-semibold"> 13&#176; </Text>
+              <Text className="text-white text-xl font-semibold">
+                {" "}
+                13&#176;{" "}
+              </Text>
             </View>
           </ScrollView>
         </View>
