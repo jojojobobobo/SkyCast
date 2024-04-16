@@ -8,7 +8,8 @@ import { MagnifyingGlassIcon } from "react-native-heroicons/outline";
 import { MapPinIcon, CalendarDaysIcon } from "react-native-heroicons/solid";
 import { ScrollView } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
-
+import {debounce} from 'lodash'
+import { useCallback } from "react";
 export default function MainPage() {
   const [showSearch, toggleSearch] = useState(false);
   const [locations, setLocations] = useState([1, 2, 3]);
@@ -20,6 +21,10 @@ export default function MainPage() {
   const getDetails = () => {
     navigation.navigate("Details");
   };
+  const handleSearch = (value) => {
+    console.log("value: ", value);
+  };
+  const handleTextDebounce = useCallback(debounce(handleSearch,1200), []);
 
   return (
     <View className="flex-1 relative">
@@ -35,11 +40,12 @@ export default function MainPage() {
           <View
             className="flex-row justify-end items-center rounded-full"
             style={{
-              backgroundColor: showSearch ? theme.bgWhite(0.2) : "transparent",
+              backgroundColor: showSearch ? theme.bgWhite(0.2) : 'transparent'
             }}
           >
             {showSearch ? (
               <TextInput
+                onChangeText={handleTextDebounce}
                 placeholder="Search City"
                 placeholderTextColor={"lightgray"}
                 className="pl-6 h-10 pb-1 flex-1 text-base text-white"
