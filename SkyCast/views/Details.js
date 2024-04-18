@@ -7,8 +7,14 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { MagnifyingGlassIcon } from "react-native-heroicons/outline";
 import { MapPinIcon, CalendarDaysIcon } from "react-native-heroicons/solid";
 import { ScrollView } from "react-native-gesture-handler";
+import { fetchLocations, fetchWeatherForecast } from "../api/weather";
+import {useEffect} from 'react';
+export default function Details({route}) {
+ 
 
-export default function Details() {
+  const { weather } = route.params;
+  const { current } = weather;
+  
   return (
     <View className="flex-1 relative">
       <StatusBar style="dark" />
@@ -19,33 +25,35 @@ export default function Details() {
       />
 
       <View className="flex justify-center items-center">
-        <View className="flex-row space-x-2 items-center p-5">
+        <View className="flex-row space-x-2 items-center p-5" style={{ backgroundColor: theme.bgWhite(0.15) }}>
           <TouchableOpacity>
-            <Text className="text-white">Air Speed</Text>
-            <Image
+          <Image
               source={require("../icons/wind.png")}
-              className="h-20 w-20"
-            />
-            <Text className="text-white font-semibold text-base">22km</Text>
+              className="h-20 w-20"/>
+            <Text className="text-white font-semibold text-base">Air Speed</Text>
+            
+            <Text className="text-white text-center font-semibold text-base">{current?.wind_kph}km</Text>
           </TouchableOpacity>
         </View>
 
-        <View className="flex-row space-x-2 items-center p-5">
+        <View className="flex-row space-x-2 items-center p-5" style={{ backgroundColor: theme.bgWhite(0.15)}}>
           <TouchableOpacity>
-            <Text className="text-white">Sunrise</Text>
-            <Image source={require("../icons/sun.png")} className="h-20 w-20" />
-            <Text className="text-white font-semibold text-base">6:05AM</Text>
+          <Image source={require("../icons/sun.png")} className="h-20 w-20" />
+            <Text className="text-white text-center">Sunrise</Text>
+            
+            <Text className="text-white text-center font-semibold text-base">{weather?.forecast?.forecastday[0]?.astro.sunrise}</Text>
           </TouchableOpacity>
         </View>
 
-        <View className="flex-row space-x-2 items-center p-5">
+        <View className="flex-row space-x-2 items-center p-5" style={{ backgroundColor: theme.bgWhite(0.15)}}>
           <TouchableOpacity>
-            <Text className="text-white">Precipitation</Text>
-            <Image
+          <Image
               source={require("../icons/drop.png")}
               className="h-20 w-20"
             />
-            <Text className="text-white font-semibold text-base">23%</Text>
+            <Text className="text-white">Humidity</Text>
+            
+            <Text className="text-white font-semibold text-base text-center ">{current?.humidity}%</Text>
           </TouchableOpacity>
         </View>
 

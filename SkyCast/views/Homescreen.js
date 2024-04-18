@@ -1,19 +1,20 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from "@react-navigation/native";
 
 const HomeScreen = () => {
-  const weatherIconUrl = "https://cdn-icons-png.flaticon.com/512/10127/10127236.png";
-  
+  const weatherIconUrl =
+    "https://cdn-icons-png.flaticon.com/512/10127/10127236.png";
+
   const navigation = useNavigation();
 
   const handleGetStarted = () => {
-      navigation.navigate('MainPage');
+    navigation.navigate("MainPage");
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title} >Welcome to SkyCast</Text>
+      <Text style={styles.title}>Sky Cast</Text>
       <Image source={{ uri: weatherIconUrl }} style={styles.weatherIcon} />
       <TouchableOpacity style={styles.button} onPress={handleGetStarted}>
         <Text style={styles.buttonText}>Get Started</Text>
@@ -29,11 +30,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#fff",
   },
-  title: {
-    fontSize: 24,
-    marginBottom: 20,
+  title: {    
+    fontSize: 36,     
   },
-  buttonText: {
+buttonText: {
     color: "white",
     fontSize: 24,
     fontWeight: "bold",
@@ -42,13 +42,16 @@ const styles = StyleSheet.create({
     borderRadius: 25,
   },
   button: {
-    backgroundColor: 'blue',
+    backgroundColor: "blue",
     padding: 10,
     borderRadius: 25,
-},
+    width: 250,
+    alignItems: "center",
+    
+  },
   weatherIcon: {
-    width: 100, 
-    height: 100,
+    width: 200,
+    height: 200,
     marginBottom: 20,
   },
 });
