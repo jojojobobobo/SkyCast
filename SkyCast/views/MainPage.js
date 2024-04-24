@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, SafeAreaView, TextInput } from "react-native";
+import { View, Text, SafeAreaView, TextInput,Button,Pressable } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { Image } from "react-native";
 import { theme } from "../theme/index";
@@ -43,19 +43,17 @@ export default function MainPage() {
       });
     }
   };
-  useEffect(() =>{
+  useEffect(() => {
     fetchMyWeatherData();
-  },[]);
+  }, []);
   const fetchMyWeatherData = async () => {
     fetchWeatherForecast({
       cityName: "Loudonville, NY",
       days: 7,
     }).then((data) => {
       setWeather(data);
-      
-
-    })
-  }
+    });
+  };
   const handleTextDebounce = useCallback(debounce(handleSearch, 1200), []);
   const { current, location } = weather;
   return (
@@ -145,13 +143,13 @@ export default function MainPage() {
         </View>
 
         {/* other stats */}
-        <View className="text-white flex-row mx-4 text-center justify-center">
+        <View className="text-white flex-row mx-4 text-center justify-center rounded-2xl">
           <TouchableOpacity
-            className="justify-between mx-4 text-center  rounded-3xl p-10"
+            className="justify mx-4 text-center p-10"
             onPress={getDetails}
           >
             <Text
-              className="text-white bg-blue-600 mt-5  text-2xl border-2 rounded-3xl h-10 w-70"
+              className="text-white  text-2xl border-2 rounded-3xl h-10 w-70"
               style={{ backgroundColor: theme.bgWhite(0.15) }}
             >
               See Details
@@ -163,7 +161,7 @@ export default function MainPage() {
         <View className="mb-2 space-y-3">
           <View className="flex-row items-center mx-5 space-x-2">
             <CalendarDaysIcon size="22" color="white" />
-            <Text className="text-white mt-5 text-base border-solid border-radius5">
+            <Text className="text-white text-base border-solid border-radius5">
               {" "}
               Daily Forecast{" "}
             </Text>
@@ -174,11 +172,10 @@ export default function MainPage() {
             contentContainerStyle={{ paddingHorizontal: 15 }}
             showHorizontalScrollIndicator={false}
           >
-            {
-            weather?.forecast?.forecastday?.map((item, index) => {
+            {weather?.forecast?.forecastday?.map((item, index) => {
               let date = new Date(item.date);
-              let options = {weekday: 'long'};
-              let dayName = date.toLocaleDateString('en-US', options);
+              let options = { weekday: "long" };
+              let dayName = date.toLocaleDateString("en-US", options);
               dayName = dayName.split(",")[0];
               return (
                 <View
@@ -196,7 +193,6 @@ export default function MainPage() {
                 </View>
               );
             })}
-
           </ScrollView>
         </View>
       </SafeAreaView>
