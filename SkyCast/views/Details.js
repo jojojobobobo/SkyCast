@@ -29,7 +29,7 @@ export default function Details({ route }) {
         >
           <View className="flex-row items-center space-x-2">
             <Image
-              source={require("../icons/wind.png")}
+              source={require("../icons/wind11.png")}
               className="h-10 w-10"
             />
             <View>
@@ -48,7 +48,7 @@ export default function Details({ route }) {
           style={{ backgroundColor: theme.bgWhite(0.15), width: '100%' }}
         >
           <View className="flex-row items-center space-x-2">
-            <Image source={require("../icons/sunrise.png")} className="h-10 w-10" />
+            <Image source={require("../icons/sunrise11.png")} className="h-10 w-10" />
             <View>
               <Text className="text-white font-semibold text-base">
                 Sunrise
@@ -65,7 +65,7 @@ export default function Details({ route }) {
           style={{ backgroundColor: theme.bgWhite(0.15), width: '100%' }}
         >
           <View className="flex-row items-center space-x-2">
-            <Image source={require("../icons/sunset.png")} className="h-10 w-10" />
+            <Image source={require("../icons/sunset11.png")} className="h-10 w-10" />
             <View>
               <Text className="text-white font-semibold text-base">
                 Sunset
@@ -83,7 +83,7 @@ export default function Details({ route }) {
         >
           <View className="flex-row items-center space-x-2">
             <Image
-              source={require("../icons/humidity.png")}
+              source={require("../icons/drop.png")}
               className="h-10 w-10"
             />
             <View>
@@ -102,7 +102,7 @@ export default function Details({ route }) {
         >
           <View className="flex-row items-center space-x-2">
             <Image
-              source={require("../icons/north.png")}
+              source={require("../icons/winddir.png")}
               className="h-10 w-10"
             />
             <View>
@@ -121,7 +121,7 @@ export default function Details({ route }) {
         >
           <View className="flex-row items-center space-x-2">
             <Image
-              source={require("../icons/uv-index.png")}
+              source={require("../icons/sunrise11.png")}
               className="h-10 w-10"
             />
             <View>
@@ -140,7 +140,7 @@ export default function Details({ route }) {
         >
           <View className="flex-row items-center space-x-2">
             <Image
-              source={require("../icons/happy.png")}
+              source={require("../icons/feelslike11.png")}
               className="h-10 w-10"
             />
             <View>
