@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, SafeAreaView, TextInput,Button,Pressable } from "react-native";
+import {
+  View,
+  Text,
+  SafeAreaView,
+  TextInput,
+  Button,
+  Pressable,
+} from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { Image } from "react-native";
 import { theme } from "../theme/index";
@@ -12,6 +19,7 @@ import { debounce } from "lodash";
 import { useCallback } from "react";
 import { fetchLocations, fetchWeatherForecast } from "../api/weather";
 import { weatherImages } from "../constants";
+import { StyleSheet } from "react-native";
 export default function MainPage() {
   const [showSearch, toggleSearch] = useState(false);
   const [locations, setLocations] = useState([]);
@@ -19,6 +27,9 @@ export default function MainPage() {
 
   const getDetails = () => {
     navigation.navigate("Details", { weather });
+  };
+  const getAstro = () => {
+    navigation.navigate("Astro", { weather });
   };
 
   const navigation = useNavigation();
@@ -90,7 +101,7 @@ export default function MainPage() {
             </TouchableOpacity>
           </View>
           {locations.length > 0 && showSearch ? (
-            <View className="absolute w-full bg-grey-300 top-16 rounded-3xl">
+            <View className="absolute w-full bg-gray-300 top-16 rounded-3xl">
               {locations.map((loc, index) => {
                 let showBorder = index + 1 != locations.length;
                 let borderClass = showBorder
@@ -145,13 +156,11 @@ export default function MainPage() {
         {/* other stats */}
         <View className="text-white flex-row mx-4 text-center justify-center rounded-2xl">
           <TouchableOpacity
-            className="justify mx-4 text-center p-10"
+            style={styles.button}
+            className="justify mx-4 my-5 text-center p-5"
             onPress={getDetails}
           >
-            <Text
-              className="text-white  text-2xl border-2 rounded-3xl h-10 w-70"
-              style={{ backgroundColor: theme.bgWhite(0.15) }}
-            >
+            <Text className="text-white  text-2xl border-2 rounded-3xl h-10 w-70">
               See Details
             </Text>
           </TouchableOpacity>
@@ -195,7 +204,33 @@ export default function MainPage() {
             })}
           </ScrollView>
         </View>
+        <View className="text-white flex-row mx-4 text-center justify-center rounded-2xl">
+        
+          <TouchableOpacity
+            style={styles.button}
+            className="flex-row mx-4 my-10 text-center p-5"
+            onPress={getAstro}
+            
+          >
+             <Image
+              source={require("../icons/telescope.png")}
+              className="h-10 w-10"
+            />
+            <Text className="text-white  text-2xl border-2 rounded-3xl  h-10 w-70">
+              Astronomy
+            </Text>
+           
+          </TouchableOpacity>
+        </View>
       </SafeAreaView>
     </View>
   );
 }
+const styles = StyleSheet.create({
+  button: {
+    backgroundColor: theme.bgWhite(0.15),
+    height: 70,
+    borderRadius: 25,
+    justifyContent: "center",
+  },
+});

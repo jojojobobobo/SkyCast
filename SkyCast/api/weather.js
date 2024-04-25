@@ -8,6 +8,11 @@ const forecastEndpoint = (
 const locationsEndpoint = (params) =>
   `https://api.weatherapi.com/v1/search.json?key=${apiKey}&q=${params.cityName}`;
 
+  const astroEndpoint = (
+    params
+  ) => `https://api.weatherapi.com/v1/astronomy.json?key=${apiKey}&q=${params.cityName}&dt=2024-04-25`;
+  
+
 const apiCall = async (endpoint) => {
   const options = {
     method: "GET",
@@ -26,4 +31,7 @@ export const fetchWeatherForecast = (params) => {
 };
 export const fetchLocations = (params) => {
     return apiCall(locationsEndpoint(params));
+  };
+  export const fetchAstro = (params) => {
+    return apiCall(astroEndpoint(params));
   };
