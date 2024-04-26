@@ -4,9 +4,7 @@ import {
   Text,
   SafeAreaView,
   TextInput,
-  Button,
-  Pressable,
-} from "react-native";
+} from 'react-native';
 import { StatusBar } from "expo-status-bar";
 import { Image } from "react-native";
 import { theme } from "../theme/index";
@@ -20,6 +18,7 @@ import { useCallback } from "react";
 import { fetchLocations, fetchWeatherForecast } from "../api/weather";
 import { weatherImages } from "../constants";
 import { StyleSheet } from "react-native";
+
 export default function MainPage() {
   const [showSearch, toggleSearch] = useState(false);
   const [locations, setLocations] = useState([]);
@@ -79,7 +78,7 @@ export default function MainPage() {
         {/* search section */}
         <View style={{ height: "7%" }} className="mx-4 relative z-50">
           <View
-            className="flex-row justify-end items-center rounded-full"
+            className="flex-row justify-end items-center rounded-full mt-2"
             style={{
               backgroundColor: showSearch ? theme.bgWhite(0.2) : "transparent",
             }}
@@ -89,13 +88,13 @@ export default function MainPage() {
                 onChangeText={handleTextDebounce}
                 placeholder="Search City"
                 placeholderTextColor={"lightgray"}
-                className="pl-6 h-10 pb-1 flex-1 text-base text-white"
+                className="pl-6 h-10 flex-1 text-base text-white"
               />
             ) : null}
             <TouchableOpacity
               onPress={() => toggleSearch(!showSearch)}
               style={{ backgroundColor: theme.bgWhite(0.3) }}
-              className="rounded-full p-3 m-1"
+              className="rounded-full p-3 m-1 "
             >
               <MagnifyingGlassIcon size="25" color="white" />
             </TouchableOpacity>
@@ -110,9 +109,9 @@ export default function MainPage() {
                 return (
                   <TouchableOpacity
                     onPress={() => handleLocation(loc)}
-                    key={index}
+                    key={loc.id || index}
                     className={
-                      "flex-row items-center border-0 p03 px-4 mb-1 " +
+                      "flex-row items-center border-0 p03 px-4 mb-1" +
                       borderClass
                     }
                   >
@@ -129,7 +128,7 @@ export default function MainPage() {
         {/* forecast section */}
 
         {/* location */}
-        <Text className="text-white text-center text-2xl font-bold">
+        <Text className="text-white text-center text-2xl font-bold pt-3">
           {location?.name},
           <Text className="text-lg  font-semibold text-gray-300 ">
             {" " + location?.country}
@@ -154,23 +153,23 @@ export default function MainPage() {
         </View>
 
         {/* other stats */}
-        <View className="text-white flex-row mx-4 text-center justify-center rounded-2xl">
+        <View className="text-white flex-row mx-4 text-center justify-center rounded-2xl h-10">
           <TouchableOpacity
             style={styles.button}
-            className="justify mx-4 my-5 text-center p-5"
+            className="justify-center text-center p-4 mt-2"
             onPress={getDetails}
           >
-            <Text className="text-white  text-2xl border-2 rounded-3xl h-10 w-70">
+            <Text className="text-white text-2xl border-2 rounded-3xl h-10 w-70">
               See Details
             </Text>
           </TouchableOpacity>
         </View>
 
         {/* next days forecast */}
-        <View className="mb-2 space-y-3">
-          <View className="flex-row items-center mx-5 space-x-2">
+        <View className="mb-4 space-y-3 ">
+          <View className="flex-row items-center mx-5 space-x-2 mt-10">
             <CalendarDaysIcon size="22" color="white" />
-            <Text className="text-white text-base border-solid border-radius5">
+            <Text className="text-white text-base border-solid border-radius5 ">
               {" "}
               Daily Forecast{" "}
             </Text>
@@ -178,7 +177,8 @@ export default function MainPage() {
 
           <ScrollView
             horizontal
-            contentContainerStyle={{ paddingHorizontal: 15 }}
+            contentContainerStyle={{ paddingHorizontal: 15,
+             }}
             showHorizontalScrollIndicator={false}
           >
             {weather?.forecast?.forecastday?.map((item, index) => {
@@ -205,21 +205,21 @@ export default function MainPage() {
           </ScrollView>
         </View>
         <View className="text-white flex-row mx-4 text-center justify-center rounded-2xl">
-        
+
           <TouchableOpacity
             style={styles.button}
-            className="flex-row mx-4 my-10 text-center p-5"
+            className="flex-row mx-4 mb-15 text-center p-5"
             onPress={getAstro}
-            
+
           >
              <Image
               source={require("../icons/telescope.png")}
               className="h-10 w-10"
             />
-            <Text className="text-white  text-2xl border-2 rounded-3xl  h-10 w-70">
+            <Text className="text-white text-2xl border-2 rounded-3xl w-70 ">
               Astronomy
             </Text>
-           
+
           </TouchableOpacity>
         </View>
       </SafeAreaView>
