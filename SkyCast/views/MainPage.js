@@ -4,6 +4,7 @@ import {
   Text,
   SafeAreaView,
   TextInput,
+  Linking,
 } from 'react-native';
 import { StatusBar } from "expo-status-bar";
 import { Image } from "react-native";
@@ -30,7 +31,17 @@ export default function MainPage() {
   const getAstro = () => {
     navigation.navigate("Astro", { weather });
   };
-
+  const sendEmail = () => {
+    const email = 'your@email.com'; 
+    const subject = 'Astronomy Inquiry';
+    const location = weather?.location?.name || 'Unknown Location';
+    const temperature = weather?.current?.temp_f || 'Unknown Temperature';
+    const body = `Hey! The weather at ${location} is ${temperature}°F! Thanks to SkyCast I am able to send you emails about the weather!`; 
+    const mailtoUrl = `mailto:${email}?subject=${subject}&body=${body}`;
+  
+    Linking.openURL(mailtoUrl);
+  };
+  
   const navigation = useNavigation();
 
   const handleLocation = (loc) => {
@@ -218,6 +229,21 @@ export default function MainPage() {
             />
             <Text className="text-white text-2xl border-2 rounded-3xl w-70 ">
               Astronomy
+            </Text>
+
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.button}
+            className="flex-row mx-4 mb-15 text-center p-5"
+            onPress={sendEmail}
+
+          >
+            <Image
+              source={require("../icons/stamp.png")}
+              className="h-10 w-10"
+            />
+            <Text className="text-white text-2xl border-2 rounded-3xl w-70 ">
+              Email
             </Text>
 
           </TouchableOpacity>
