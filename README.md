@@ -30,6 +30,7 @@ To get started with this app:
 
 By Andrew Jop, Adam Ahmadzai and Jeffery Cheng
 
+![image](https://github.com/jojojobobobo/SkyCast/assets/88753213/f48ee130-17c1-4b4f-a668-9f386e85d541)
 
 
 
