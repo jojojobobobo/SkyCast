@@ -33,7 +33,7 @@ export default function MainPage() {
   };
   const sendEmail = () => {
     const email = 'your@email.com'; 
-    const subject = 'Astronomy Inquiry';
+    const subject = 'Todays Weather with SkyCast!';
     const location = weather?.location?.name || 'Unknown Location';
     const temperature = weather?.current?.temp_f || 'Unknown Temperature';
     const body = `Hey! The weather at ${location} is ${temperature}°F! Thanks to SkyCast I am able to send you emails about the weather!`; 
